@@ -4,15 +4,20 @@ import java.util.Scanner;
 
 public class Customer{
 	
-	private static final Scanner input = new Scanner(System.in) ;
-	
 	String name ;
 	String phoneNumber ;
+	int visitTimes ;
 	
-	Customer(){
-		System.out.print("請輸入名稱 : ") ;
-		name = input.nextLine() ;
+	public Customer(){
+		name = inputName() ;
 		phoneNumber = inputPhoneNumber() ;
+		visitTimes = visitTimes() ;
+	}
+	
+	public String inputName(){
+		System.out.print("請輸入名稱 : ") ;
+		name = new Scanner(System.in).nextLine() ;
+		return name ;
 	}
 	
 	public String inputPhoneNumber(){
@@ -20,23 +25,32 @@ public class Customer{
 		
 		while (continueInput){
 			System.out.print("請輸入電話 10位數 : ") ;
-			phoneNumber = input.nextLine() ;
+			phoneNumber = new Scanner(System.in).nextLine() ;
 			
 			if(phoneNumber.matches("\\d{10}")){
 				continueInput = false ;
 			}else {
-				System.out.println("輸入號碼不符合規定");
+				System.out.println("輸入號碼不符合規定") ;
 			}
 		}
 		return phoneNumber ;
 	}
 	
-	String getName(){
+	public int visitTimes(){
+		System.out.print("請輸入來訪次數 : ") ;
+		visitTimes = new Scanner(System.in).nextInt();
+		return visitTimes ;
+	}
+	
+	public String getName(){
 		return name ;
 	}
 	
-	String getPhoneNumber(){
+	public String getPhoneNumber(){
 		return phoneNumber ;
 	}
-
+	
+	public int getVisitTimes(){
+		return visitTimes ;
+	}
 }
